@@ -9,7 +9,7 @@
 /**
  * Intended to augment by end users.
  *
- * See https://github.com/nvie/ast-generator/blob/main/README.md#assigning-semantics-meaning-to-nodes
+ * See https://github.com/nvie/ast-generator/blob/main/README.md#assigning-semantic-meaning-to-nodes
  */
 export interface Semantics {}
 
@@ -518,7 +518,7 @@ export function arrayType(ofType: Type, range: Range = [0, 0]): ArrayType {
     (() => {
       assert(
         isType(ofType),
-        `Invalid value for "ofType" arg in "ArrayType" call.\nExpected: @Type\nGot:      ${JSON.stringify(ofType)}`
+        `Invalid value for "ofType" arg in "ArrayType" call.\nExpected: Type\nGot:      ${JSON.stringify(ofType)}`
       );
       assertRange(range, "ArrayType");
     })();
@@ -550,7 +550,7 @@ export function document(
         Array.isArray(definitions) &&
           definitions.length > 0 &&
           definitions.every((item) => isDefinition(item)),
-        `Invalid value for "definitions" arg in "Document" call.\nExpected: @Definition+\nGot:      ${JSON.stringify(definitions)}`
+        `Invalid value for "definitions" arg in "Document" call.\nExpected: Definition+\nGot:      ${JSON.stringify(definitions)}`
       );
       assertRange(range, "Document");
     })();
@@ -581,7 +581,7 @@ export function fieldDef(
       );
       assert(
         isType(type),
-        `Invalid value for "type" arg in "FieldDef" call.\nExpected: @Type\nGot:      ${JSON.stringify(type)}`
+        `Invalid value for "type" arg in "FieldDef" call.\nExpected: Type\nGot:      ${JSON.stringify(type)}`
       );
       assert(
         leadingComment === null || typeof leadingComment === "string",
@@ -649,7 +649,7 @@ export function liveListType(
     (() => {
       assert(
         isType(ofType),
-        `Invalid value for "ofType" arg in "LiveListType" call.\nExpected: @Type\nGot:      ${JSON.stringify(ofType)}`
+        `Invalid value for "ofType" arg in "LiveListType" call.\nExpected: Type\nGot:      ${JSON.stringify(ofType)}`
       );
       assertRange(range, "LiveListType");
     })();
@@ -669,11 +669,11 @@ export function liveMapType(
     (() => {
       assert(
         isType(keyType),
-        `Invalid value for "keyType" arg in "LiveMapType" call.\nExpected: @Type\nGot:      ${JSON.stringify(keyType)}`
+        `Invalid value for "keyType" arg in "LiveMapType" call.\nExpected: Type\nGot:      ${JSON.stringify(keyType)}`
       );
       assert(
         isType(valueType),
-        `Invalid value for "valueType" arg in "LiveMapType" call.\nExpected: @Type\nGot:      ${JSON.stringify(valueType)}`
+        `Invalid value for "valueType" arg in "LiveMapType" call.\nExpected: Type\nGot:      ${JSON.stringify(valueType)}`
       );
       assertRange(range, "LiveMapType");
     })();
@@ -825,7 +825,7 @@ export function unionType(
         Array.isArray(members) &&
           members.length > 0 &&
           members.every((item) => isNonUnionType(item)),
-        `Invalid value for "members" arg in "UnionType" call.\nExpected: @NonUnionType+\nGot:      ${JSON.stringify(members)}`
+        `Invalid value for "members" arg in "UnionType" call.\nExpected: NonUnionType+\nGot:      ${JSON.stringify(members)}`
       );
       assertRange(range, "UnionType");
     })();

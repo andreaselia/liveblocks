@@ -9,10 +9,10 @@ set discriminator "_kind"
 semantic method check()
 
 Document {
-  definitions: @Definition+
+  definitions: Definition+
 }
 
-@ScalarType =
+ScalarType =
   | StringType
   | NumberType
   | BooleanType
@@ -20,33 +20,33 @@ Document {
   | LiteralType
 
 # A custom user-defined type definition
-@Definition =
+Definition =
   | ObjectTypeDefinition
 
-@NonUnionType =
-  | @ScalarType
+NonUnionType =
+  | ScalarType
   | ArrayType
   | ObjectLiteralType
-  | @LiveType
+  | LiveType
   | TypeRef
 
-@Type =
-  | @NonUnionType
+Type =
+  | NonUnionType
   | UnionType
 
-@LiveType =
+LiveType =
   # NOTE: LiveObject is *NOT* a LiveType, but a special modifier on TypeRef
   | LiveMapType
   | LiveListType
 
 # e.g. "A | B", "A | (B | C)", etc
 UnionType {
-  members: @NonUnionType+
+  members: NonUnionType+
 }
 
 # e.g. "string[]", or "number[][]", etc.
 ArrayType {
-  ofType: @Type
+  ofType: Type
 }
 
 # Reference to a custom, user-defined, type. Not a built-in. Things like
@@ -59,7 +59,7 @@ TypeRef {
 FieldDef {
   name: Identifier
   optional: boolean
-  type: @Type
+  type: Type
   leadingComment?: string
   trailingComment?: string
 }
@@ -76,13 +76,13 @@ Identifier {
 
 # e.g. LiveList<number>
 LiveListType {
-  ofType: @Type
+  ofType: Type
 }
 
 # e.g. LiveMap<string, number>
 LiveMapType {
-  keyType: @Type
-  valueType: @Type
+  keyType: Type
+  valueType: Type
 }
 
 # e.g. { cx: Number; cy: Number; r: Float }
